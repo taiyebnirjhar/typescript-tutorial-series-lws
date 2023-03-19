@@ -27,5 +27,3 @@ tsc --init
 ```bash
 tsc -w
 ```
-
----
