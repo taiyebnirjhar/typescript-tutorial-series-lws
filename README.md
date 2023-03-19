@@ -1,1 +1,1 @@
-# typescript-tutorial-series-lws
+# সহজ বাংলায় Type Script Tutorial Series ( lesson - 3 )
