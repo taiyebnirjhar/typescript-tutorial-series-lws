@@ -18,7 +18,7 @@ tsc --init
 
 ---
 
-### Change Addition directory for rootDir and outDir on `tsconfig.json`
+### Change Additional directory for rootDir and outDir on `tsconfig.json`
 
 ---
 
