@@ -65,8 +65,6 @@ Error: Variable 'a' is used before being assigned.
 
 ➡️ Because a is declared as an `array of strings` but has not been initialized with a value (`atleast empty array [] `). When we try to push a value to an uninitialized array, TypeScript will throw an error `because the array does not exist yet. `.
 
-⚠️➡️⚠️🔥
-
 ### Union Types
 
 1. String: `let a: string | number ;`
