@@ -1,6 +1,6 @@
 # সহজ বাংলায় Type Script Tutorial Series ( lesson - 4 )
 
-### Explicit & Union Types
+### Explicit Types
 
 ---
 
@@ -66,3 +66,63 @@ Error: Variable 'a' is used before being assigned.
 ➡️ Because a is declared as an `array of strings` but has not been initialized with a value (`atleast empty array [] `). When we try to push a value to an uninitialized array, TypeScript will throw an error `because the array does not exist yet. `.
 
 ⚠️➡️⚠️🔥
+
+### Union Types
+
+1. String: `let a: string | number ;`
+
+➡️ Here value will be either string or number. pretty much self explainatory
+
+2. Array: `let arr:(string | number)[] = []`
+
+3. Object:
+
+   type one:
+
+   ```ts
+   let c: object;
+   c = {
+     name: "taiyeb", // could be any type
+   };
+   ```
+
+   type two:
+
+   ```ts
+   let c: {
+     name: string;
+     age: number;
+     adult: boolean;
+   };
+
+   c = {
+     name: "taiyeb",
+     age: 24,
+     adult: true,
+   };
+   ```
+
+   type three:
+
+   ```ts
+   let c: object;
+
+   c = [1, 2, 3];
+   ```
+
+   🔥 Also valid. becasue in javaScript `typeof arr === typeof obj` retruns `true`
+   <br>
+   ⚠️ But if our object has an explicit pattern, array will not be accepted
+
+   ```ts
+   let obj: {
+     name: string;
+     age: number;
+   };
+   obj = ["hi", 123];
+   ~~~
+
+   Error: Type '(string | number)[]' is missing the following properties from type '{ name: string; age: number; }': name, age
+   ```
+
+   🔥 HOW SMART! Aint it?
