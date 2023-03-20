@@ -1,143 +1,68 @@
-# সহজ বাংলায় Type Script Tutorial Series ( lesson - 3 )
+# সহজ বাংলায় Type Script Tutorial Series ( lesson - 4 )
 
-### Basic of type checking
-
----
-
-#### String & Number
-
-Lets check a simple variable assignment and declaration on vanila js style
-
-```bash
-let playerName = "sakib";
-console.log(playerName);
-
-playerName = 50;
-
-console.log(playerName);
-
-```
-
-If we try to compile this code, it will return this error:
-
-```bash
-error TS2322: Type 'number' is not assignable to type 'string'.
-
-line 4: playerName = 50;
-        ~~~~~~~~~~
-```
-
-➡️ Beacuse typescript infere ( অনুমান করা) the value of `playerName` will be always string.
-
-⚠️ How!!!!!
-
-🔥 ` TypeScript infers the value type of a variable based on the type of value that is assigned to it.`
+### Explicit & Union Types
 
 ---
 
-Hmmm.. WHAT IF, we just declare a variable without assigning any value, Like:
+#### String
+
+Explicitly declaring variable type for string
 
 ```bash
-let playerName;
+let myName: string;
 
-playerName = "Sakib";
+myName = "taiyeb nirjhor";
 
-playerName = 35;
-
-console.log(playerName); // 35
+console.log(myName); // taiyeb nirjhor
 ```
 
-Now its giving expected value.
+If we try to assign anyother type of value rather than string, it will return an error, like:
 
-➡️ Because initial value was `player === undifined`
+```bash
+let myName: string;
 
-🚨 ` SO TYPESCRIPT SHOW'S THIS KIND OF BEHAVIOUR ONLY IF WE DECLARE A VARIABLE AND ASSIGN A VALUE AT THE SAME TIME.`
+myName = 1999;
+~~~~~~
+console.log(myName);
+
+terminal error: Type 'number' is not assignable to type 'string'.
+```
 
 ---
 
-#### Function
+#### Number
 
-what about functions and its params!
-
-lets see a simple function with a human error
+Explicitly declaring variable type for number
 
 ```bash
-function multiply(a, b) {
-  return a * b;
-}
+let myRole: number;
 
-console.log(multiply('hello', 5)); // NaN
-```
+myName = 212902003;
 
-⚠️ We have added a typo knowingly. but typescript helps us to get better developer experince.
-
-My editor IntelliSense is giving me two warnings:
-
-1.
-
-```bash
-Parameter 'a' implicitly has an 'any' type.
-```
-
-2.
-
-```bash
-Parameter 'b' implicitly has an 'any' type.
-```
-
-➡️ Because its not the recommended way to define a function in typescript.
-
-➡️ we have to explicitely define type of arguments which can prevent our typo, like this:
-
-```bash
-function multiply(a: number, b: number) {
-  return a * b;
-}
-```
-
-now if we pass any arguments rather than number it will give us error
-
-```bash
-console.log(multiply('hello',5))
-```
-
-```bash
-error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
-
-line 22: console.log(multiply("hello", 5));
-                              ~~~~~~~
+console.log(myName); // 212902003
 ```
 
 #### Array
 
-For This array:
+Array of String
 
-```bash
-const mixed = [5, "mango", true];
+```ts
+let a: string[] = [];
 ```
 
-➡️ only number, string and boolean are acceptable to push
+Here We have to assign a value (in this case empty array `[]`), otherwise it will give error. for example:
 
-#### Object
+```ts
+let a: string[];
 
-For This Object:
+a.push('hello');
+~~~~~~
 
-```bash
-let person = {
-  name: "masrafi",
-  age: 34,
-  isCaptain: true,
-}
+Error: Variable 'a' is used before being assigned.
 ```
 
-➡️ name can only hold string
-➡️ age can only hold number
-➡️ isCaptain can only hold boolean
+➡️ `We Can't Use an Array Method (array.push()), Without an Array 😅`
 
-if we try this
+➡️ Because a is declared as an `array of strings` but has not been initialized with a value (`atleast empty array [] `). When we try to push a value to an uninitialized array, TypeScript will throw an error `because the array does not exist yet. `.
 
-```bash
-person.name = 10;
-```
-
-It will return error
+⚠️➡️⚠️🔥
